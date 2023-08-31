@@ -15,6 +15,7 @@
     'use strict';
 
     var abstract = '';
+    var title = $('.citation__title').text();
 
     $('.article__body').find('p').each(function(){
 
@@ -35,6 +36,7 @@
         },
         url: "http://localhost:5000/abstract",
         data: JSON.stringify({
+            "title": title,
             "abstract": abstract
         }),
         onload: function(response) {

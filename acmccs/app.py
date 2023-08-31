@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, abort
 
 app = Flask(__name__)
 
@@ -6,10 +6,12 @@ app = Flask(__name__)
 def abstract():
     data = request.get_json()
 
+    title = data.get('title', None)
     abstract = data.get('abstract', None)
-    if abstract is None:
-        return 404
-    
-    print(abstract)
 
-    return jsonify(data)
+    if abstract is None:
+        abort(404)
+    
+    print(title)
+
+    return "ok"
